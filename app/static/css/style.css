@@ -1,0 +1,10 @@
+.div1{
+    width: 100%;
+    background-color: blue;
+}
+.div2{
+    width: 60%;
+    background-color:white;
+    border-radius: 10px;
+    margin-right: 10px;
+}

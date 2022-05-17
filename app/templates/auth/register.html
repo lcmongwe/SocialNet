@@ -1,17 +1,19 @@
 {% extends "base.html"%} {% import 'bootstrap/wtf.html' as wtf%} {% block
 styles%}
 
-<link rel="stylesheet" href="{{url_for('static',filename='auth.css')}}" />
+<link rel="stylesheet" href="{{url_for('static',filename='css/auth.css')}}" />
 
 {% endblock %} {% block content %}
 <div class="sign">
-  <h3 align="center">SIGN-UP FORM</h3>
+  
 
   <div class="container">
+    
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-8 div1">
         <div class="div2">
+          <h3 align="center">SIGN-UP FORM</h3>
           {{wtf.quick_form(registration_form)}}
         </div>
       </div>
