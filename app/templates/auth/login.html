@@ -4,26 +4,32 @@
 {% block styles%}
 
 
-<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
 
 {% endblock %}
 
 
 {% block content %}
+
+
 <div class="login">
-<div class="container"> 
   
+  <div class="container">
+    <img src="/app/static/images/Abstraction.png" alt="image" class="image">
     <div class="row">
-      <div class= "col-md-2">
-         </div>
-      <div class="col-md-8 logform">
-      
-      {{wtf.quick_form(login_form)}}
-      <p> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
-     </div>
-     <div clas="col-md-2"> </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-8 div1">
+        
+        <div class="div2">
+          <h3 align="center">Login</h3>
+          {{wtf.quick_form(login_form)}}
+          <p> Don't have an account? <a href="{{url_for('view.register')}}">Sign up here</a></p>
+        </div>
+        
+      </div>
+      <div class="col-md-2"></div>
     </div>
-</div>
+  </div>
 </div>
 {% endblock%}
 
