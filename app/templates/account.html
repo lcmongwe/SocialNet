@@ -1,19 +1,49 @@
 {% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="title-wrappper">
+    <h1>Profile</h1>
+  </div>
 
-<h1>alright alright alright.....</h1>
-<div class="profile-wrapper">
-  <h1 class="account-title">Username:{{current_user.username}}</h1>
-  <p class="secondary-title">Email:{{current_user.email}}</p>
-  {%if user.bio%}
-  <p class="user-bio">Bio:{{user.bio}}</p>
+  {%if profile_pic%}
+  <div class="profile-pic-wrapper">
+    <img src="{{url_for('static', filename.profile_pic_path)}}" alt="" />
+  </div>
   {%else%}
-  <p>no bio</p>
-  {%endif%} {%if user==current_user%}
-  <a href="{{url_for('main.update_account',uname = user.username)}}">
-    Edit Profile
-  </a>
-</div>
+  <div class="default-profile-wrapper">
+    <img src="{{url_for('static', filename='')}}" alt="profile picture here" />
+  </div>
 
-{%endif%}
+  {%endif%}
+
+  <div class="user-profile-btn">
+    <form
+      action="{{url_for('main.update_pic', uname = username)}}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      {{form.csrf_token}}
+      <input type="file" name="photo" required class="input-button" />
+      <input type="submit" class="submit-btn" />
+    </form>
+  </div>
+
+  <div class="profile-wrapper">
+    <h1 class="account-title">Username:{{username}}</h1>
+    <p class="secondary-title">Email:{{email}}</p>
+    {%if bio%}
+    <p class="user-bio">Bio:{{bio}}</p>
+    {%else%}
+    <p>no bio</p>
+    {%endif%}
+
+    <a href="{{url_for('main.update_account',uname = username)}}">
+      Edit Profile
+    </a>
+  </div>
+
+  <!-- <div class="my-post">
+    <h1>My posts</h1>
+  </div> -->
+</div>
 
 {% endblock %}
