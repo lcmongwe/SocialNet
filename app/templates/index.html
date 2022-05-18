@@ -2,5 +2,11 @@
 
 <!-- hero section -->
 {% block content %}
-<h3>Welcome home</h3>
+<div class="container">
+  <h3>Welcome home</h3>
+  <div class="temp-nav">
+    <a href="{{url_for('auth.login')}}" class="btn btn-outline-primary">login</a>
+    <a href="{{url_for('auth.register')}}" class="btn btn-outline-secondary">Register</a>
+  </div>
+</div>
 {% endblock %}

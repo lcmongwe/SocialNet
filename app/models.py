@@ -1,7 +1,6 @@
-from app import db
+from app import db,login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
-from . import login_manager
 from flask_login import UserMixin,current_user
 
 @login_manager.user_loader
@@ -15,22 +14,23 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(100), unique=True)
     profile_pic = db.Column(db.String(20))
     bio = db.Column(db.String(200))
-    pass_secure = db.Column(db.String(120))
+    password = db.Column(db.String(120))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.relationship('Post', backref='author', lazy='dynamic')
     comment_id = db.relationship('Comment', backref='author', lazy='dynamic')
 
-
+    # ! changes made start
     @property
     def password(self):
-        raise AttributeError('You cannot read the password attribute')
+        raise AttributeError('You cannot Read Attribute Error')
 
     @password.setter
     def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+        self.secure_password = generate_password_hash(password)
 
-    def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+    def verify_password(self, password):
+        return check_password_hash(self.secure_password, password)
+# ! changes made start
 
     def __repr__(self):
         return f'<User: {self.username}>'
@@ -62,5 +62,3 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'<Comment: {self.comment}>'
-
-
