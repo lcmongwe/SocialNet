@@ -1,5 +1,12 @@
 from app import db
 from datetime import datetime
+from . import db, login_manager
+from werkzeug.security import generate_password_hash, check_password_hash
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 class User(db.Model):
@@ -13,6 +20,19 @@ class User(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.relationship('Post', backref='author', lazy='dynamic')
     comment_id = db.relationship('Comment', backref='author', lazy='dynamic')
+
+    # ! changes made start
+    @property
+    def password(self):
+        raise AttributeError('You cannot Read Attribute Error')
+
+    @password.setter
+    def password(self, password):
+        self.secure_password = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.secure_password, password)
+# ! changes made start
 
     def __repr__(self):
         return f'<User: {self.username}>'
@@ -41,5 +61,3 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'<Comment: {self.comment}>'
-
-
