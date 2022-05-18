@@ -3,10 +3,24 @@
 <!-- hero section -->
 {% block content %}
 <div class="container">
+  {% if current_user.is_authenticated %}
+  <h3>Welcome {{current_user.username}}</h3>
+  {% else %}
   <h3>Welcome home</h3>
+  {% endif %}
   <div class="temp-nav">
-    <a href="{{url_for('auth.login')}}" class="btn btn-outline-primary">login</a>
-    <a href="{{url_for('auth.register')}}" class="btn btn-outline-secondary">Register</a>
+    {% if current_user.is_anonymous %}
+    <a href="{{url_for('auth.login')}}" class="btn btn-outline-primary"
+      >login</a
+    >
+    <a href="{{url_for('auth.register')}}" class="btn btn-outline-secondary"
+      >Register</a
+    >
+    {% else %}
+    <a href="{{url_for('auth.logout')}}" class="btn btn-outline-primary"
+      >logout</a
+    >
+    {% endif %}
   </div>
 </div>
 {% endblock %}
