@@ -1,5 +1,48 @@
-{% extends 'base.html' %} {% block content %}
-<div class="container">
-  <p>You are now viewing the login page</p>
+{% extends 'base.html' %}
+<!-- register form -->
+{% block content %}
+<div class="container register">
+  
+    
+      <div class="regform">
+      <form action="" method="post">
+        <h2 class="text-center">Login</h2>
+        {{ form.csrf_token }}
+        <div class="form-group">
+          {{ form.username.label(class='form-label') }} <br />
+          {{ form.username(class='form-control', size=32) }} <br />
+          {% for error in form.username.errors %}
+          <span class="text-danger">[{{error}}]</span>
+          {% endfor %}
+          <!-- errors -->
+        </div>
+
+
+        <div class="password">
+          {{form.password.label(class='form-label') }} <br />
+          {{form.password(class='form-control', size=32)}}
+          <!-- errors -->
+          {% for error in form.password.errors %}
+          <span class="text-danger">[{{error}}]</span>
+          {% endfor %}
+          <!-- errors -->
+        </div>
+        <div class="submit_btn mt-2">
+          <button
+            type="submit"
+            class="btn btn-lg btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#popup"
+            id="submit"
+          >
+            Login
+          </button>
+        </div>
+        <p> Don't Have an account ? <a href="{{url_for('auth.register')}}">Register here</a></p>
+      </form>
+    </div>
+  
 </div>
 {% endblock %}
+
+
