@@ -11,14 +11,14 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/account/<uname>')
+@main.route('/account')
 #@login_required
-def account(uname):
+def account():
     form=UpdateAccount()
-    user = User.query.filter_by(username=uname).first()
-    if user is None:
-        abort(404)
-    return render_template('account.html',form=form, user=user)
+    # user = User.query.filter_by(username=uname).first()
+    # if user is None:
+        # abort(404)
+    return render_template('account.html',form=form)
 
     
 @main.route('/account/<uname>/update/', methods=['GET', 'POST'])
