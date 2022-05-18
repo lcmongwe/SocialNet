@@ -5,5 +5,5 @@ from app.main.urls import main
 @main.route('/',methods = ['GET','POST'])
 def index():
     form =RegistrationForm()
-    return render_template('index.html',registration_form=form)
+    return render_template('auth/register.html',form=form)
 

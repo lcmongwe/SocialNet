@@ -4,24 +4,53 @@ styles%}
 <link rel="stylesheet" href="{{url_for('static',filename='css/auth.css')}}" />
 
 {% endblock %} {% block content %}
-<div class="sign">
-  
-
-  <div class="container">
-    
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8 div1">
-        
-        <div class="div2">
-          <h3 align="center">Create Account</h3>
-          {{wtf.quick_form(registration_form)}}
-          <p> Already have an account? <a href="{{url_for('view.login')}}">Login here</a></p>
-        </div>
-        
-      </div>
-      <div class="col-md-2"></div>
-    </div>
+<div class="container">
+<form action="" method="post">
+  {{ form.csrf_token }}
+  <div class="form-group">
+    {{ form.username.label(class='form-label') }} <br />
+    {{ form.username(class='form-control', size=32) }} <br />
+    {% for error in form.username.errors %}
+    <span class="text-danger">[{{error}}]</span>
+    {% endfor %}
+    <!-- errors -->
   </div>
+  <div class="email">
+    {{ form.email.label(class='form-label')}} <br />
+    {{ form.email(class='form-control', size=32) }}
+    <!-- errors -->
+    {% for error in form.email.errors %}
+    <span class="text-danger">[{{error}}]</span>
+    {% endfor %}
+    <!-- errors -->
+  </div>
+  <div class="password">
+    {{ form.password.label(class='form-label') }} <br />
+    {{ form.password(class='form-control', size=32) }}
+    <!-- errors -->
+    {% for error in form.password.errors %}
+    <span class="text-danger">[{{error}}]</span>
+    {% endfor %}
+  </div>
+  <div class="password">
+    {{form.password_confirm.label(class='form-label') }} <br />
+    {{form.password_confirm(class='form-control', size=32)}}
+    <!-- errors -->
+    {% for error in form.password_confirm.errors %}
+    <span class="text-danger">[{{error}}]</span>
+    {% endfor %}
+    <!-- errors -->
+  </div>
+  <div class="submit_btn mt-2">
+    <button
+      type="submit"
+      class="btn btn-sm btn-outline-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#popup"
+    >
+      Sign Up
+    </button>
+  </div>
+</form>
 </div>
 {%endblock%}
