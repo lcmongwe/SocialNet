@@ -13,6 +13,7 @@ class User(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.relationship('Post', backref='author', lazy='dynamic')
     comment_id = db.relationship('Comment', backref='author', lazy='dynamic')
+    # follow_id = db.relationship ('Follow', backref='author',lazy='dynamic')
 
     def __repr__(self):
         return f'<User: {self.username}>'
@@ -42,5 +43,15 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'<Comment: {self.comment}>'
+    
+    
+# class Follow(db.Model):
+#     __tablename__ = 'followers'
+#     id = db.Column(db.Integer, primary_key=True)
+#     follower= db.column(db.Integer,ForeignKey('users.id'))
+#     followed= db.column(db.Integer,ForeignKey('users.id'))
+    
+
+    
 
 

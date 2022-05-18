@@ -2,7 +2,9 @@
 
 <!-- hero section -->
 {% block content %}
-<p>post id : {{ comments.post_id}}</p>
-<p>time:{{comments.Timestamp}}</p>
-<p>comment: {{comments.comment}}</p>
+{% for comment in comments%}
+<p>post id : {{ comment.post_id}}</p>
+<p>time:{{comment.timestamp}}</p>
+<p>comment: {{comment.comment}}</p>
+{%endfor%}
 {% endblock %}

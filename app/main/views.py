@@ -6,18 +6,18 @@ from .. import db
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    comments= Comment.query.all()
+    return render_template('index.html',comments=comments)
 
 @main.route('/comment', methods= ["GET","POST"])
-def Comment():
+def comment():
     form = CommentForm()
     if form.validate_on_submit():
-        comments= form.comments.data
-        comments = Comment(comments = comments)
-        db.session.add(comments)
+        comment = Comment(comment = form.comment.data)
+        db.session.add(comment)
         db.session.commit()
-        return redirect(url_for('main.comment'))
-    return render_template('main/index.html', form = form)
+        return redirect(url_for('main.index'))
+    return render_template('comment.html', form = form)
         
         
         
