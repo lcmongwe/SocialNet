@@ -1,0 +1,24 @@
+body {
+  background-color: #e5e5e5;
+}
+
+/* top nav start */
+.top-nav__middle li > a {
+  margin: 0 0.8em;
+}
+
+.top-nav__middle li:hover {
+  border-bottom: #00acff solid 2px;
+  width: 20%;
+}
+/* top nav end */
+
+/* search bar styles */
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text {
+  background-color: rgba(12, 65, 149, 0.55);
+  border-radius: 0 5px 5px 0;
+}
+.fa-search {
+  color: #000;
+}
+/* search bar styles end */
