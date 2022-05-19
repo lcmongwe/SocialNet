@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.relationship('Post', backref='author', lazy='dynamic')
     comment_id = db.relationship('Comment', backref='author', lazy='dynamic')
-    # follow_id = db.relationship ('Follow', backref='author',lazy='dynamic')
+  
 
     @property
     def password(self):
