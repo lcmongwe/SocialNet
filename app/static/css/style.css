@@ -1,21 +1,5 @@
 
-.div1 {
-  /* width: 100%; */
-  width: 10px;
-  background-color: #0c4195;
-  border: 3px solid red;
-  background-image: url(../images/Abstraction.jpg);
-  background-size: 300px 300px;
 
-  background-repeat: no-repeat;
-}
-.div2 {
-  width: 60%;
-  background-color: #fffafa;
-  border-radius: 20px;
-  margin-left: 50%;
-  padding: 20px;
-}
 
 .register{
 
@@ -65,4 +49,82 @@ body {
   color: #000;
 }
 /* search bar styles end */
+.title-wrapper{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.profile-pic-wrapper img{
+  border-radius: 60%;
+  width: 250px;
+  height: 250px;
+  padding: 15px;
+}
+.profile-pic-wrapper{
+  background-color:#00ACFF;
+  /* border-radius: 20px; */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+}
+.profile-pic-wrapper h3{
+  margin-top: 100px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: aliceblue;
+  font-weight: bolder;
+  font-family: 'Poppins', sans-serif;
+}
 
+.user-profile-btn{
+  /* margin-top: 20px; */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  height: 90px;
+  background-color: white;
+  text-align: center;
+}
+.input-button{
+  margin-top: 30px;
+}
+.submit-btn{
+  background-color:#5D5FEF;
+  color: aliceblue;
+  height: 35px;
+  width: 70px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.profile-wrapper{
+  /* border: 3px solid red; */
+  margin-top: 30px;
+  text-align: left;
+  border-radius: 20px;
+  background-color: white;
+  height: 200px;
+
+}
+
+.profile-wrapper a{
+  font-size: x-large;
+  text-decoration: underline;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.profile-wrapper h2,h3{
+  margin-left: 20px;
+}
+.bio-form{
+  text-align: center;
+}
+
+.form-bio{
+  width: 900px;
+  height: 400px;
+  font-size: xx-large;
+  border-radius: 20px;
+  background-color: #5d5fef21;
+}

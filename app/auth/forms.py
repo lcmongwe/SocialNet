@@ -12,7 +12,7 @@ class RegistrationForm(FlaskForm):
     username = StringField('Enter your username',validators = [InputRequired()])
     password = PasswordField('Password',validators = [InputRequired(), EqualTo('password_confirm',message='Passwords must match')])
     password_confirm = PasswordField('Confirm Passwords',validators = [InputRequired()])
-    submit = SubmitField('Create Account' ,id="submit")
+    submit = SubmitField('Create Account', id="submit")
 
     def validate_email(self,data_field):
             if User.query.filter_by(email=data_field.data).first():

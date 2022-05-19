@@ -1,47 +1,42 @@
-{% extends 'base.html' %}
-<!-- register form -->
-{% block content %}
-<div class="container register">
+{% extends 'base.html' %} {% block content %}
+<div class="container  register">
   
-    
-      <div class="regform">
-      <form action="" method="post">
-        <h2 class="text-center">Login</h2>
-        {{ form.csrf_token }}
-        <div class="form-group">
-          {{ form.username.label(class='form-label') }} <br />
-          {{ form.username(class='form-control', size=32) }} <br />
-          {% for error in form.username.errors %}
-          <span class="text-danger">[{{error}}]</span>
-          {% endfor %}
-          <!-- errors -->
-        </div>
-
-
-        <div class="password">
-          {{form.password.label(class='form-label') }} <br />
-          {{form.password(class='form-control', size=32)}}
-          <!-- errors -->
-          {% for error in form.password.errors %}
-          <span class="text-danger">[{{error}}]</span>
-          {% endfor %}
-          <!-- errors -->
-        </div>
-        <div class="submit_btn mt-2">
-          <button
-            type="submit"
-            class="btn btn-lg btn-outline-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#popup"
-            id="submit"
-          >
-            Login
-          </button>
-        </div>
-        <p> Don't Have an account ? <a href="{{url_for('auth.register')}}">Register here</a></p>
-      </form>
+  <form action="" method="post" class="regform">
+    <h2 class="text-center">Login In</h2>
+    {{ form.csrf_token }}
+    <div class="form-group">
+      {{ form.username.label(class='form-label') }} <br />
+      {{ form.username(class='form-control', size=32) }} <br />
+      {% for error in form.username.errors %}
+      <span class="text-danger">[{{error}}]</span>
+      {% endfor %}
+      <!-- errors -->
     </div>
-  
+    <div class="password">
+      {{ form.password.label(class='form-label') }} <br />
+      {{ form.password(class='form-control', size=32) }}
+      <!-- errors -->
+      {% for error in form.password.errors %}
+      <span class="text-danger">[{{error}}]</span>
+      {% endfor %}
+    </div>
+    <div class="form-check">
+      {{form.remember(class='form-check-input')}}
+      {{form.remember.label(class='form-check-label')}}
+    </div>
+    <div class="submit_btn mt-2" id="submit">
+      <button
+        type="submit"
+        class="btn btn-sm btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#popup"
+      >
+        Login
+      </button>
+    </div>
+    <p>Dont have an account? <a class="ml-2" href="{{url_for('auth.register')}}">signup</a></p>
+  </form>
+
 </div>
 {% endblock %}
 

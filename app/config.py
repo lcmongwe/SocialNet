@@ -10,6 +10,7 @@ class Config:
         'SECRET_KEY') or '<try-guessing-one-might-work>'
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
 class ProdConfig(Config):
     pass

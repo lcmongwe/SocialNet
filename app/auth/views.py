@@ -18,7 +18,7 @@ def login():
         if user is  None or user.verify_password(form.password.data):
             flash("Invalid Username or password")
             return redirect(url_for('auth.login'))
-        login_user(user, form.remember.data)
+        login_user(user, remember=form.remember.data)
         next_page = request.args.get('next')
         return redirect(next_page) if next_page else redirect(url_for('main.index'))
     return render_template('auth/login.html', form=form, title="Login")
@@ -32,7 +32,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(email=form.email.data,
-                    username=form.username.data, password=form.password.data)
+                    username=form.username.data, password_hash=form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('Account created successfully')
