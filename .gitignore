@@ -2,13 +2,30 @@
 # Created by https://www.toptal.com/developers/gitignore/api/flask
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask
 
+app/__pycache__/__init__.cpython-38.pyc
+app/__pycache__/config.cpython-38.pyc
+app/__pycache__/models.cpython-38.pyc
+app/auth/__pycache__/forms.cpython-38.pyc
+app/auth/__pycache__/views.cpython-38.pyc
+app/main/__pycache__/urls.cpython-38.pyc
+app/main/__pycache__/views.cpython-38.pyc
+start.sh
+venv/bin/Activate.ps1
+venv/bin/activate
+venv/bin/activate.csh
+venv/bin/activate.fish
+venv/bin/python
+venv/bin/python3
+venv/lib64
+venv/pyvenv.cfg
+
 ### Flask ###
 instance/*
 !instance/.gitignore
 .webassets-cache
 .env
 start.sh
-.pyc
+*.pyc
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
