@@ -48,13 +48,27 @@
               alt=""
           /></a>
         </li>
+        {% if current_user.is_anonymous %}
         <li class="nav-item">
-          <a class="nav-link" href="{{url_for('main.account',uname=current_user.username)}}"
+          <a
+            class="nav-link d-none"
+            href="{{url_for('main.account',uname=current_user.username)}}"
             ><img
               src="{{url_for('static', filename='photos/icons/profile.png')}}"
               alt=""
           /></a>
         </li>
+        {% else %}
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{{url_for('main.account',uname=current_user.username)}}"
+            ><img
+              src="{{url_for('static', filename='photos/icons/profile.png')}}"
+              alt=""
+          /></a>
+        </li>
+        {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <div class="input-group mb-2 mr-sm-2">
