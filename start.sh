@@ -1,10 +1,10 @@
-export SQLALCHEMY_DATABASE_URI='postgresql://jurassic:pass123@localhost/socialnetdb'
-export SECRET_KEY='WRXCVB5254KK25MJNMYUIOLGHYUIVNBNBNBNNBNVMCDMCHHJG'
-
+export SECRET_KEY=abc
+export SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://lucy:4444@localhost/nets'
 
 # python3 manage.py shell
-python manage.py server
-# python manage.py db init
-# python manage.py db migrate -m "schema updates for profile"
-# python manage.py db upgrade
+python3 manage.py server
+# python3 manage.py db init
+# python3 manage.py db migrate -m "initial migration"
+# python3 manage.py db upgrade
 # python manage.py db stamp head
+

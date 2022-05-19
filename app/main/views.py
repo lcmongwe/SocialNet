@@ -1,16 +1,21 @@
 from flask import render_template,redirect,url_for,request,abort
 from flask_login import login_required
+
 # from flask_login import current_user
+
 from app.main.urls import main
 from app.models import User, Comment
 from app.main.forms import UpdateAccount, CommentForm  
+from app.auth.forms import RegistrationForm
 from app import db, photos
 
 
-@main.route('/')
+@main.route('/',methods = ['GET','POST'])
 def index():
+
     comments= Comment.query.all()
     return render_template('index.html',comments=comments)
+
 
 
 @main.route('/account/<uname>')

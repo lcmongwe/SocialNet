@@ -1,3 +1,30 @@
+
+
+
+.register{
+
+  background-color: #0c4195 ;
+  margin-top: 10%;
+  
+}
+
+.regform{
+  width: 60%;
+  background-color: #fffafa;
+  border-radius: 20px;
+  margin-left: 50%;
+  padding: 20px;
+}
+
+#submit {
+  background-color: #0c4195;
+  color: white;
+  font-weight: bolder;
+  width: 70%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
 body {
   background-color: #e5e5e5;
 }

@@ -2,9 +2,10 @@
 
 <!-- register form -->
 {% block content %}
-<div class="container bg-danger">
-  <h2 class="text-center">Sign Up</h2>
-  <form action="" method="post">
+<div class="container  register">
+  
+  <form action="" method="post" class="regform">
+    <h2 class="text-center">Sign Up</h2>
     {{ form.csrf_token }}
     <div class="form-group">
       {{ form.username.label(class='form-label') }} <br />
@@ -40,7 +41,7 @@
       {% endfor %}
       <!-- errors -->
     </div>
-    <div class="submit_btn mt-2">
+    <div class="submit_btn mt-2" id="submit">
       <button
         type="submit"
         class="btn btn-sm btn-outline-primary"
@@ -50,13 +51,9 @@
         Sign Up
       </button>
     </div>
+    <p>  already have  an account
+      <a class="ml-2" href="{{url_for('auth.login')}}">login</a></p>
   </form>
 
-  <div class="border-top pt-3">
-    <small class="text-muted">
-      signup to create an account
-      <a class="ml-2" href="{{url_for('auth.login')}}">login</a>
-    </small>
-  </div>
-</div>
+
 {% endblock %}
