@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container bg-info">
-  <h2 class="text-center">Sign Up</h2>
-  <form action="" method="post">
+<div class="container  register">
+  
+  <form action="" method="post" class="regform">
+    <h2 class="text-center">Login In</h2>
     {{ form.csrf_token }}
     <div class="form-group">
       {{ form.username.label(class='form-label') }} <br />
@@ -20,19 +21,23 @@
       {% endfor %}
     </div>
     <div class="form-check">
-      {{form.remember.label(class='form-check-label')}}
       {{form.remember(class='form-check-input')}}
+      {{form.remember.label(class='form-check-label')}}
     </div>
-    <div class="submit_btn mt-2">
+    <div class="submit_btn mt-2" id="submit">
       <button
         type="submit"
         class="btn btn-sm btn-outline-primary"
         data-bs-toggle="modal"
         data-bs-target="#popup"
       >
-        Sign Up
+        Login
       </button>
     </div>
+    <p>Dont have an account? <a class="ml-2" href="{{url_for('auth.register')}}">signup</a></p>
   </form>
+
 </div>
 {% endblock %}
+
+
