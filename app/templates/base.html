@@ -22,10 +22,10 @@
     <title>Social Net</title>
   </head>
   <body>
-    {% with messages = get_flashed_messages() %} {% if messages %} {% for
-    message in messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
     <div
-      class="alert alert-success alert-dismissible text-center fade show m-0"
+      class="alert alert-danger alert-dismissible text-center fade show m-0"
       role="alert"
     >
       {{message}}
@@ -46,5 +46,6 @@
     <script src="{{url_for('static', filename='js/jquery-3.6.0.js')}}"></script>
     <script src="{{url_for('static', filename='js/popper-2.11.2.js')}}"></script>
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
   </body>
 </html>
