@@ -2,12 +2,14 @@
 
 <!-- hero section -->
 {% block content %}
+
 <div class="container">
   {% if current_user.is_authenticated %}
   <h3>Welcome {{current_user.username}}</h3>
   {% else %}
   <h3>Welcome home</h3>
   {% endif %}
+
   <div class="temp-nav">
     {% if current_user.is_anonymous %}
     <a href="{{url_for('auth.login')}}" class="btn btn-outline-primary"
@@ -16,11 +18,22 @@
     <a href="{{url_for('auth.register')}}" class="btn btn-outline-secondary"
       >Register</a
     >
-    {% else %}
+
+    {% elif not current_user.is_anonymous %}
     <a href="{{url_for('auth.logout')}}" class="btn btn-outline-primary"
       >logout</a
     >
+    {% else %}
+    <a href="{{url_for('main.comment')}}" class="btn btn-outline-primary"
+      >Add comment</a
+    >
     {% endif %}
   </div>
+</div>
+<div class="container">
+  {%for comment in comments%}
+  <p>comment:{{comment.comment}}</p>
+  <p>time posted: {{comment.timestamp}}</p>
+  {%endfor%}
 </div>
 {% endblock %}

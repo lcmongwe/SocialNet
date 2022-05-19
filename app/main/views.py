@@ -1,16 +1,16 @@
 from flask import render_template,redirect,url_for,request,abort
 from flask_login import login_required
-from flask import render_template
 # from flask_login import current_user
 from app.main.urls import main
-from app.models import User
-from app.main.forms import UpdateAccount
-from app import db,photos
+from app.models import User, Comment
+from app.main.forms import UpdateAccount, CommentForm  
+from app import db, photos
 
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    comments= Comment.query.all()
+    return render_template('index.html',comments=comments)
 
 
 @main.route('/account/<uname>')
@@ -50,25 +50,19 @@ def update_pic(uname):
         db.session.commit()
         return redirect(url_for('main.account',uname=user.username))
     
+# comment view method
+@main.route('/comment', methods= ["GET","POST"])
+def comment():
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(comment = form.comment.data)
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    return render_template('comment.html', form = form)
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
