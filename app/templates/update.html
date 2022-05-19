@@ -1,0 +1,18 @@
+{%extends 'base.html'%} {%block content%}
+
+<div class="container">
+  <div class="title-wrapper">
+    <h1>Update Bio</h1>
+  </div>
+
+  <div class="bio-form">
+    <form method="post">
+      {{update.csrf_token}}
+      <p class="input">{{update.bio(placeholder="bio",class="form-bio")}}</p>
+      <input type="submit" class="submit-btn" />
+
+    </form>
+  </div>
+</div>
+
+{%endblock%}
